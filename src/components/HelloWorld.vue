@@ -1,143 +1,147 @@
 <template>
-  <div class="hello container">
-    <h1>{{ msg }}</h1>
+  <div class="container-contact100">
+    <div class="wrap-contact100">
+      <div class="hello container">
+        <span class="contact100-form-title">{{ msg }}</span>
 
-    <!-- <form>
-      <div class="form-group row">
-        <label for="jobTitle" class="col-sm-2 col-form-label">Job Title</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="jobTitle" v-model="searchInput.jobTitle" />
+      <!-- <form>
+        <div class="form-group row">
+          <label for="jobTitle" class="col-sm-2 col-form-label">Job Title</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="jobTitle" v-model="searchInput.jobTitle" />
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label for="companyName" class="col-sm-2 col-form-label">Company Name</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="companyName"
-            v-model="searchInput.companyName"
-          />
+        <div class="form-group row">
+          <label for="companyName" class="col-sm-2 col-form-label">Company Name</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="companyName"
+              v-model="searchInput.companyName"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="formControlRange">
-          Recruit Me Score
-          <span class="badge badge-primary">{{searchInput.score}}</span>
-        </label>
-        <input
-          type="range"
-          class="form-control-range"
-          id="formControlRange"
-          v-model="searchInput.score"
-        />
-      </div>
-
-      <button type="button" class="btn btn-primary" v-on:click="mapSearch">Search</button>
-    </form>-->
-
-    <form class="contact100-form">
-      <div
-        class="wrap-input100 validate-input bg1 rs1-wrap-input100"
-        data-validate="Please enter Job Title"
-      >
-        <span class="label-input100">Job Title</span>
-        <input
-          class="input100"
-          type="text"
-          name="jobTitle"
-          id="jobTitle"
-          placeholder="Enter Job Title"
-          v-model="searchInput.jobTitle"
-        />
-      </div>
-      <div class="wrap-input100 bg1 rs1-wrap-input100" data-validate="Please enter Company Name">
-        <span class="label-input100">Company Name</span>
-        <input
-          class="input100"
-          type="text"
-          name="companyName"
-          id="companyName"
-          placeholder="Enter Company Name"
-          v-model="searchInput.companyName"
-        />
-      </div>
-      <div class="wrap-contact100-form-range">
-        <label for="filter-bar" class="label-input200">
-          Confidence Score Range
-          <span class="badge badge-primary">{{searchInput.score}}</span>
-        </label>
-        <div class="contact100-form-range-bar">
+        <div class="form-group">
+          <label for="formControlRange">
+            Recruit Me Score
+            <span class="badge badge-primary">{{searchInput.score}}</span>
+          </label>
           <input
             type="range"
-            class="form-control-range contact100-form-range-bar"
-            id="filter-bar"
+            class="form-control-range"
+            id="formControlRange"
             v-model="searchInput.score"
           />
         </div>
-      </div>
-      <div class="container-contact100-form-btn">
-        <button class="contact100-form-btn" type="button" v-on:click="mapSearch">
-          <span>Search</span>
-        </button>
-      </div>
-    </form>
 
-    <div class="row">
-      <button type="button" class="btn btn-primary btn-lg" v-on:click="activateListView">List View</button>
-      <button type="button" class="btn btn-secondary btn-lg" v-on:click="activateMapView">Map View</button>
-    </div>
+        <button type="button" class="btn btn-primary" v-on:click="mapSearch">Search</button>
+      </form>-->
 
-    <div v-if="this.mapView" class="row">
-      <div class="col-sm-8">
-        <GmapMap
-          :center="{lat: 39.5, lng: -98.35}"
-          :zoom="3"
-          map-type-id="terrain"
-          style="width: 750px; height: 500px"
+      <form class="contact100-form">
+        <div
+          class="wrap-input100 validate-input bg1 rs1-wrap-input100"
+          data-validate="Please enter Job Title"
         >
-          <GmapMarker
-            :key="index"
-            v-for="(m, index) in this.searchResults"
-            :position="{lat:parseInt(m.lat), lng:parseInt(m.lng)}"
-            :clickable="true"
-            @click="toggleInfoWindow(m)"
+          <span class="label-input100">Job Title</span>
+          <input
+            class="input100"
+            type="text"
+            name="jobTitle"
+            id="jobTitle"
+            placeholder="Enter Job Title"
+            v-model="searchInput.jobTitle"
           />
-        </GmapMap>
+        </div>
+        <div class="wrap-input100 bg1 rs1-wrap-input100" data-validate="Please enter Company Name">
+          <span class="label-input100">Company Name</span>
+          <input
+            class="input100"
+            type="text"
+            name="companyName"
+            id="companyName"
+            placeholder="Enter Company Name"
+            v-model="searchInput.companyName"
+          />
+        </div>
+        <div class="wrap-contact100-form-range">
+          <label for="filter-bar" class="label-input200">
+            Confidence Score Range
+            <span class="badge badge-primary">{{searchInput.score}}</span>
+          </label>
+          <div class="contact100-form-range-bar">
+            <input
+              type="range"
+              class="form-control-range contact100-form-range-bar"
+              id="filter-bar"
+              v-model="searchInput.score"
+            />
+          </div>
+        </div>
+        <div class="container-contact100-form-btn">
+          <button class="contact100-form-btn" type="button" v-on:click="mapSearch">
+            <span>Search</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="row">
+        <button type="button" class="contact100-form-btn width-50" v-on:click="activateListView">List View</button>
+        <button type="button" class="contact100-form-btn width-50" v-on:click="activateMapView">Map View</button>
       </div>
 
-      <div class="col-sm-4" v-if="contact">
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-            <h4 class="display-10">{{contact.name}}</h4>
-            <p class="lead">{{contact.jobTitle}} at {{contact.companyName}}</p>
+      <div v-if="this.mapView" class="row">
+        <div class="col-sm-8">
+          <GmapMap
+            :center="{lat: 39.5, lng: -98.35}"
+            :zoom="3"
+            map-type-id="terrain"
+            style="width: 750px; height: 500px"
+          >
+            <GmapMarker
+              :key="index"
+              v-for="(m, index) in this.searchResults"
+              :position="{lat:parseInt(m.lat), lng:parseInt(m.lng)}"
+              :clickable="true"
+              @click="toggleInfoWindow(m)"
+            />
+          </GmapMap>
+        </div>
+
+        <div class="col-sm-4" v-if="contact">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h4 class="display-10">{{contact.name}}</h4>
+              <p class="lead">{{contact.jobTitle}} at {{contact.companyName}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results" v-if="this.listView">
+        <h5>
+          Total Results:
+          <span class="badge badge-secondary">{{this.searchResults.length}}</span>
+        </h5>
+        <div v-for="(item, index) in this.searchResults">
+          <div
+            v-bind:class="{'alert':true, 'alert-primary':(index % 2 != 0), 'alert-secondary':(index % 2 == 0) }"
+            role="alert"
+          >
+            <h4>{{item.name}}</h4>
+            <h5>{{item.jobTitle}} at {{item.companyName}}</h5>
+            <h6>
+              Phone: {{item.phone}}, Email: {{item.email}}
+              <span
+                class="badge badge-primary"
+              >{{item.score}}</span>
+            </h6>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="results" v-if="this.listView">
-      <h5>
-        Total Results:
-        <span class="badge badge-secondary">{{this.searchResults.length}}</span>
-      </h5>
-      <div v-for="(item, index) in this.searchResults">
-        <div
-          v-bind:class="{'alert':true, 'alert-primary':(index % 2 != 0), 'alert-secondary':(index % 2 == 0) }"
-          role="alert"
-        >
-          <h4>{{item.name}}</h4>
-          <h5>{{item.jobTitle}} at {{item.companyName}}</h5>
-          <h6>
-            Phone: {{item.phone}}, Email: {{item.email}}
-            <span
-              class="badge badge-primary"
-            >{{item.score}}</span>
-          </h6>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -223,7 +227,7 @@ a {
   padding-top: 20px;
 }
 
-.badge-primary {
+.badge {
   padding: 3px;
   margin-left: 3px;
 }
@@ -239,12 +243,12 @@ a {
 
 body, html {
   height: 100%;
-  font-family: Poppins-Regular, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-  font-family: Poppins-Regular;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: #666666;
@@ -269,7 +273,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-  font-family: Poppins-Regular;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: #666666;
@@ -402,7 +406,7 @@ iframe {
 .contact100-form-title {
   display: block;
   width: 100%;
-  font-family: Montserrat-Black;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 39px;
   color: #333333;
   line-height: 1.2;
@@ -420,7 +424,7 @@ iframe {
   position: relative;
   border: 1px solid #e6e6e6;
   border-radius: 13px;
-  padding: 10px 30px 9px 22px;
+  padding: 5px 30px 9px 22px;
   margin-bottom: 20px;
 }
 
@@ -429,7 +433,7 @@ iframe {
 }
 
 .label-input100 {
-  font-family: Montserrat-SemiBold;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 10px;
   color: #393939;
   line-height: 1.5;
@@ -437,7 +441,7 @@ iframe {
 }
 
 .label-input200 {
-  font-family: Montserrat-SemiBold;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 16px;
   color: #393939;
   line-height: 1.5;
@@ -448,7 +452,7 @@ iframe {
   display: block;
   width: 100%;
   background: transparent;
-  font-family: Montserrat-SemiBold;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 18px;
   color: #555555;
   line-height: 1.2;
@@ -506,7 +510,7 @@ textarea.input100 {
   background-color: #333333;
   border-radius: 25px;
 
-  font-family: Montserrat-Medium;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
@@ -536,6 +540,79 @@ textarea.input100 {
   transform: translateX(10px);
 }
 
+/*---------------------*/
+
+.container-contact100-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.contact100-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 50px;
+  background-color: #333333;
+  border-radius: 25px;
+
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.contact100-form-btn i {
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.contact100-form-btn:hover {
+  background-color: #00ad5f;
+}
+
+.contact100-form-btn:hover i {
+  -webkit-transform: translateX(10px);
+  -moz-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  -o-transform: translateX(10px);
+  transform: translateX(10px);
+}
+
+.width-50 {
+  width: 15%;
+  background-color: #00ad5f;
+  margin-right: 5px;
+}
+
+.width-50:hover i {
+  -webkit-transform: translateX(10px);
+  -moz-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  -o-transform: translateX(10px);
+  transform: translateX(10px);
+}
+
 /*------------------------------------------------------------------
 [ Responsive ]*/
 
@@ -552,7 +629,7 @@ textarea.input100 {
   }
 
   .wrap-input100 {
-    padding: 10px 10px 9px 10px;
+    padding: 5px 10px 9px 10px;
   }
 }
 
@@ -563,71 +640,6 @@ textarea.input100 {
 
 .validate-input {
   position: relative;
-}
-
-.alert-validate::before {
-  content: attr(data-validate);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  min-height: 40px;
-  background-color: #f7f7f7;
-  top: 35px;
-  left: 0px;
-  padding: 0 45px 0 22px;
-  pointer-events: none;
-
-  font-family: Montserrat-SemiBold;
-  font-size: 18px;
-  color: #fa4251;
-  line-height: 1.2;
-}
-
-.btn-hide-validate {
-  font-family: Material-Design-Iconic-Font;
-  font-size: 18px;
-  color: #fa4251;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  top: 35px;
-  right: 12px;
-}
-
-.rs1-alert-validate.alert-validate::before {
-  background-color: #fff;
-}
-
-.true-validate::after {
-  content: "\f26b";
-  font-family: Material-Design-Iconic-Font;
-  font-size: 18px;
-  color: #00ad5f;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  top: 35px;
-  right: 10px;
 }
 
 /*---------------------------------------------*/
@@ -670,7 +682,7 @@ textarea.input100 {
 /*------------------------------------------------------------------
 [ in select ]*/
 .select2-container .select2-selection--single .select2-selection__rendered {
-  font-family: Montserrat-SemiBold;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 18px;
   color: #555555;
   line-height: 1.2;
@@ -698,7 +710,7 @@ textarea.input100 {
 
 .select2-selection__arrow::before {
   content: '\f312';
-  font-family: Material-Design-Iconic-Font;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 18px;
   color: #555555;
 }
@@ -754,7 +766,7 @@ textarea.input100 {
 }
 
 .select2-results__options {
-  font-family: Montserrat-SemiBold;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #555555;
   line-height: 1.2;
@@ -763,7 +775,7 @@ textarea.input100 {
 .select2-search--dropdown .select2-search__field {
   border: 1px solid #aaa;
   outline: none;
-  font-family: Poppins-Regular;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 15px;
   color: #333333;
   line-height: 1.2;
@@ -778,48 +790,6 @@ textarea.input100 {
 }
 
 /*==================================================================
-[ Restyle Radio ]*/
-.wrap-contact100-form-radio {
-  width: 100%;
-  padding: 15px 25px 0 25px;
-}
-
-.contact100-form-radio {
-  padding-bottom: 5px;
-}
-
-.input-radio100 {
-  display: none;
-}
-
-.label-radio100 {
-  display: block;
-  position: relative;
-  padding-left: 28px;
-  cursor: pointer;
-  font-family: Montserrat-SemiBold;
-  font-size: 18px;
-  color: #555555;
-  line-height: 1.2;
-}
-
-.label-radio100::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid #cdcdcd;
-  background: #fff;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
 
 .label-radio100::after {
   content: "";
@@ -854,15 +824,6 @@ textarea.input100 {
 .wrap-contact100-form-range {
   width: 100%;
   padding: 20px 25px 25px 25px;
-}
-
-.contact100-form-range-value {
-  font-family: Montserrat-SemiBold;
-  font-size: 18px;
-  color: #555555;
-  line-height: 1.2;
-  padding-top: 10px;
-  padding-bottom: 30px;
 }
 
 .contact100-form-range-value input {
@@ -939,6 +900,6 @@ textarea.input100 {
 }
 
 h4 {
-  color: #28a745;
+  color: #00ad5f;
 }
 </style>
