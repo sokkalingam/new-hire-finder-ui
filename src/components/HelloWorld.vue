@@ -3,44 +3,7 @@
     <div class="wrap-contact100">
       <div class="hello container">
         <span class="contact100-form-title">{{ msg }}</span>
-
-      <!-- <form>
-        <div class="form-group row">
-          <label for="jobTitle" class="col-sm-2 col-form-label">Job Title</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="jobTitle" v-model="searchInput.jobTitle" />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="companyName" class="col-sm-2 col-form-label">Company Name</label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-              id="companyName"
-              v-model="searchInput.companyName"
-            />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="formControlRange">
-            Recruit Me Score
-            <span class="badge badge-primary">{{searchInput.score}}</span>
-          </label>
-          <input
-            type="range"
-            class="form-control-range"
-            id="formControlRange"
-            v-model="searchInput.score"
-          />
-        </div>
-
-        <button type="button" class="btn btn-primary" v-on:click="mapSearch">Search</button>
-      </form>-->
-
-      <form class="contact100-form">
+        <form class="contact100-form">
         <div
           class="wrap-input100 validate-input bg1 rs1-wrap-input100"
           data-validate="Please enter Job Title"
@@ -87,28 +50,30 @@
         </div>
       </form>
 
-      <div class="row">
-        <button type="button" class="contact100-form-btn width-50" v-on:click="activateListView">List View</button>
-        <button type="button" class="contact100-form-btn width-50" v-on:click="activateMapView">Map View</button>
-      </div>
+        <hr class="seperator">
 
-      <div v-if="this.mapView" class="row">
-        <div class="col-sm-8">
-          <GmapMap
-            :center="{lat: 39.5, lng: -98.35}"
-            :zoom="3"
-            map-type-id="terrain"
-            style="width: 750px; height: 500px"
-          >
-            <GmapMarker
-              :key="index"
-              v-for="(m, index) in this.searchResults"
-              :position="{lat:parseInt(m.lat), lng:parseInt(m.lng)}"
-              :clickable="true"
-              @click="toggleInfoWindow(m)"
-            />
-          </GmapMap>
+        <div class="row">
+          <button type="button" class="width-50" v-on:click="activateListView">List View</button>
+          <button type="button" class="width-50" v-on:click="activateMapView">Map View</button>
         </div>
+
+        <div v-if="this.mapView" class="row">
+          <div class="col-sm-8">
+            <GmapMap
+              :center="{lat: 39.5, lng: -98.35}"
+              :zoom="3"
+              map-type-id="terrain"
+              style="width: 750px; height: 500px"
+            >
+              <GmapMarker
+                :key="index"
+                v-for="(m, index) in this.searchResults"
+                :position="{lat:parseInt(m.lat), lng:parseInt(m.lng)}"
+                :clickable="true"
+                @click="toggleInfoWindow(m)"
+              />
+            </GmapMap>
+          </div>
 
         <div class="col-sm-4" v-if="contact">
           <div class="jumbotron jumbotron-fluid">
@@ -120,27 +85,47 @@
         </div>
       </div>
 
-      <div class="results" v-if="this.listView">
-        <h5>
-          Total Results:
-          <span class="badge badge-secondary">{{this.searchResults.length}}</span>
-        </h5>
-        <div v-for="(item, index) in this.searchResults">
-          <div
-            v-bind:class="{'alert':true, 'alert-primary':(index % 2 != 0), 'alert-secondary':(index % 2 == 0) }"
-            role="alert"
-          >
-            <h4>{{item.name}}</h4>
-            <h5>{{item.jobTitle}} at {{item.companyName}}</h5>
-            <h6>
-              Phone: {{item.phone}}, Email: {{item.email}}
-              <span
-                class="badge badge-primary"
-              >{{item.score}}</span>
-            </h6>
+
+        <div class="results">
+          <div>
+            <div class="alert alert-light">
+              <h4 class="display-name">Ankur Pandit <span class="badge badge-primary float-right">70</span></h4>
+              <hr>
+              <dl class="row">
+                <dd class="col-sm-5 font-weight">Software Developer at Company Name</dd>
+                <dd class="col-sm-3 font-weight">440-123-456</dd>
+                <dd class="col-sm-4 font-weight">test@example.com</dd>
+
+                <dt class="col-sm-4 smaller"> Years of Experience</dt>
+                <dd class="col-sm-2 smaller">3</dd>
+                <dt class="col-sm-4 smaller"> Years of Experience</dt>
+                <dd class="col-sm-2 smaller">3</dd>
+              </dl>
+            </div>
           </div>
         </div>
-      </div>
+<!--        FF7A59-->
+<!--      <div class="results" v-if="this.listView">-->
+<!--        <h5>-->
+<!--          Total Results:-->
+<!--          <span class="badge badge-secondary">{{this.searchResults.length}}</span>-->
+<!--        </h5>-->
+<!--        <div v-for="(item, index) in this.searchResults">-->
+<!--          <div-->
+<!--            v-bind:class="{'alert':true, 'alert-primary':(index % 2 != 0), 'alert-secondary':(index % 2 == 0) }"-->
+<!--            role="alert"-->
+<!--          >-->
+<!--            <h4>{{item.name}}</h4>-->
+<!--            <h5>{{item.jobTitle}} at {{item.companyName}}</h5>-->
+<!--            <h6>-->
+<!--              Phone: {{item.phone}}, Email: {{item.email}}-->
+<!--              <span-->
+<!--                class="badge badge-primary"-->
+<!--              >{{item.score}}</span>-->
+<!--            </h6>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
     </div>
   </div>
@@ -230,6 +215,7 @@ a {
 .badge {
   padding: 3px;
   margin-left: 3px;
+  background-color: #E27D60;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -600,18 +586,31 @@ textarea.input100 {
 }
 
 .width-50 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  height: 50px;
+  border-radius: 25px;
+
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
   width: 15%;
-  background-color: #00ad5f;
+  background-color: #E27D60;
   margin-right: 5px;
 }
 
-.width-50:hover i {
-  -webkit-transform: translateX(10px);
-  -moz-transform: translateX(10px);
-  -ms-transform: translateX(10px);
-  -o-transform: translateX(10px);
-  transform: translateX(10px);
-}
 
 /*------------------------------------------------------------------
 [ Responsive ]*/
@@ -679,148 +678,6 @@ textarea.input100 {
   position: relative;
 }
 
-/*------------------------------------------------------------------
-[ in select ]*/
-.select2-container .select2-selection--single .select2-selection__rendered {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  color: #555555;
-  line-height: 1.2;
-  padding-left: 0px ;
-  background-color: transparent;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-  height: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.select2-selection__arrow b {
-  display: none;
-}
-
-.select2-selection__arrow::before {
-  content: '\f312';
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  color: #555555;
-}
-
-
-/*------------------------------------------------------------------
-[ Dropdown option ]*/
-.select2-container--open .select2-dropdown {
-  z-index: 1251;
-  width: calc(100% + 2px);
-  border: 0px solid transparent;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: white;
-  left: -24px;
-
-  box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
-  -ms-box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 576px) {
-  .select2-container--open .select2-dropdown {
-    left: -12px;
-  }
-}
-
-.select2-dropdown--above {top: -38px;}
-.select2-dropdown--below {top: 10px;}
-
-.select2-container .select2-results__option[aria-selected] {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 24px;
-}
-
-@media (max-width: 576px) {
-  .select2-container .select2-results__option[aria-selected] {
-    padding-left: 12px;
-  }
-}
-
-.select2-container .select2-results__option[aria-selected="true"] {
-  background: #00ad5f;
-  color: white;
-}
-
-.select2-container .select2-results__option--highlighted[aria-selected] {
-  background: #00ad5f;
-  color: white;
-}
-
-.select2-results__options {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #555555;
-  line-height: 1.2;
-}
-
-.select2-search--dropdown .select2-search__field {
-  border: 1px solid #aaa;
-  outline: none;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  color: #333333;
-  line-height: 1.2;
-}
-
-.wrap-input100 .dropDownSelect2 .select2-container--open {
-  width: 100% !important;
-}
-
-.wrap-input100 .dropDownSelect2 .select2-dropdown {
-  width: calc(100% + 2px) !important;
-}
-
-/*==================================================================
-
-.label-radio100::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 6px solid transparent;
-  background: #00ad5f;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding;
-  background-clip: padding-box;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  display: none;
-
-}
-
-.input-radio100:checked + .label-radio100::after {
-  display: block;
-}
-
-
-/*==================================================================
-[ rs NoUI ]*/
 .wrap-contact100-form-range {
   width: 100%;
   padding: 20px 25px 25px 25px;
@@ -900,6 +757,34 @@ textarea.input100 {
 }
 
 h4 {
-  color: #00ad5f;
+  /*color: #FF7A59;*/
+}
+
+.seperator {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.font-weight {
+  font-weight: 600;
+}
+
+dt {
+  font-weight: 600;
+}
+
+.smaller {
+  font-size: 13px
+}
+
+.display-name {
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+h4 {
+  font-weight: bold;
 }
 </style>
