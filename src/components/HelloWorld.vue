@@ -89,17 +89,19 @@
         <div class="results">
           <div>
             <div class="alert alert-light">
-              <h4 class="display-name">Ankur Pandit <span class="badge badge-primary float-right">70</span></h4>
+              <h4 class="display-name">Ankur Pandit <span class="title"> - Software Developer at Company Name</span> <span class="badge badge-primary float-right">70</span></h4>
               <hr>
               <dl class="row">
-                <dd class="col-sm-5 font-weight">Software Developer at Company Name</dd>
-                <dd class="col-sm-3 font-weight">440-123-456</dd>
-                <dd class="col-sm-4 font-weight">test@example.com</dd>
+<!--                <dd class="col-sm-12 font-weight">Software Developer at Company Name</dd>-->
+                <dd class="col-sm-6 font-weight">440-123-456</dd>
+                <dd class="col-sm-6 font-weight">test@example.com</dd>
 
-                <dt class="col-sm-4 smaller"> Years of Experience</dt>
-                <dd class="col-sm-2 smaller">3</dd>
-                <dt class="col-sm-4 smaller"> Years of Experience</dt>
-                <dd class="col-sm-2 smaller">3</dd>
+                <dt class="col-sm-4 smaller"> Average time in Position: </dt>
+                <dd class="col-sm-8 smaller">3</dd>
+                <dt class="col-sm-4 smaller"> Changed a job last year: </dt>
+                <dd class="col-sm-8 smaller">3</dd>
+                <dt class="col-sm-4 smaller"> # of jobs changed in last 10 years: </dt>
+                <dd class="col-sm-8 smaller">3</dd>
               </dl>
             </div>
           </div>
@@ -215,7 +217,7 @@ a {
 .badge {
   padding: 3px;
   margin-left: 3px;
-  background-color: #E27D60;
+  background-color: #FF7A59;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -514,17 +516,17 @@ textarea.input100 {
   transition: all 0.4s;
 }
 
-.contact100-form-btn:hover {
-  background-color: #00ad5f;
-}
+/*.contact100-form-btn:hover {*/
+/*  background-color: #00ad5f;*/
+/*}*/
 
-.contact100-form-btn:hover i {
-  -webkit-transform: translateX(10px);
-  -moz-transform: translateX(10px);
-  -ms-transform: translateX(10px);
-  -o-transform: translateX(10px);
-  transform: translateX(10px);
-}
+/*.contact100-form-btn:hover i {*/
+/*  -webkit-transform: translateX(10px);*/
+/*  -moz-transform: translateX(10px);*/
+/*  -ms-transform: translateX(10px);*/
+/*  -o-transform: translateX(10px);*/
+/*  transform: translateX(10px);*/
+/*}*/
 
 /*---------------------*/
 
@@ -552,7 +554,7 @@ textarea.input100 {
   padding: 0 20px;
   width: 100%;
   height: 50px;
-  background-color: #333333;
+  background-color: #FF7A59;
   border-radius: 25px;
 
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -573,17 +575,9 @@ textarea.input100 {
   transition: all 0.4s;
 }
 
-.contact100-form-btn:hover {
-  background-color: #00ad5f;
-}
-
-.contact100-form-btn:hover i {
-  -webkit-transform: translateX(10px);
-  -moz-transform: translateX(10px);
-  -ms-transform: translateX(10px);
-  -o-transform: translateX(10px);
-  transform: translateX(10px);
-}
+/*.contact100-form-btn:hover {*/
+/*  background-color: #00ad5f;*/
+/*}*/
 
 .width-50 {
   display: -webkit-box;
@@ -594,7 +588,7 @@ textarea.input100 {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  height: 50px;
+  height: 40px;
   border-radius: 25px;
 
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -606,8 +600,9 @@ textarea.input100 {
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
-  width: 15%;
-  background-color: #E27D60;
+  width: 14%;
+  /*background-color: #FF7A59;*/
+  background-color: #818182;
   margin-right: 5px;
 }
 
@@ -756,10 +751,6 @@ textarea.input100 {
   padding: 7px;
 }
 
-h4 {
-  /*color: #FF7A59;*/
-}
-
 .seperator {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -786,5 +777,11 @@ dt {
 
 h4 {
   font-weight: bold;
+  color: #FF7A59;
+}
+
+.title {
+  color: #818182;
+  font-size: 1.2rem;
 }
 </style>
