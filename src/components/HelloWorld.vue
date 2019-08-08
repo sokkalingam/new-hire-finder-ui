@@ -22,8 +22,8 @@
       <div class="form-group">
         <label for="formControlRange">
           <h5>
-              Recruit Me Score
-              <span class="badge badge-primary">{{searchInput.score}}</span>
+            Recruit Me Score
+            <span class="badge badge-primary">{{searchInput.score}}</span>
           </h5>
         </label>
         <input type="range" class="form-control-range" id="formControlRange" v-model="searchInput.score"
@@ -70,17 +70,46 @@
       </div>
 
       <div v-if="this.listView">
-        <div :key="index" v-for="(item, index) in this.searchResults">
-          <div v-bind:class="{'alert':true, 'alert-primary':(index % 2 != 0), 'alert-danger':(index % 2 == 0) }"
-            role="alert">
-            <h4>{{item.name}}</h4>
-            <h5>{{item.jobTitle}} at {{item.companyName}}</h5>
-            <h6>
-              Phone: {{item.phone}}, Email: {{item.email}}
-              <span class="badge badge-primary">{{item.score}}</span>
-            </h6>
-          </div>
+
+        <div v-if="this.searchResults.length > 0">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Avg time in position</th>
+                <th>Changed a job last year</th>
+                <th>No of job changes in last 10 years</th>
+                <th>Contact Info</th>
+                <th>RecuitMe Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr :key="index" v-for="(item, index) in this.searchResults">
+                <td>{{item.name}}</td>
+                <td>{{item.jobTitle}}</td>
+                <td>{{item.companyName}}</td>
+                <td>{{item.avgTimeInPosition}}</td>
+                <td>{{item.changedAJobLastYear}}</td>
+                <td>{{item.numJobChangesLast10Years}}</td>
+                <td>{{item.phone}}, {{item.email}}</td>
+                <td>{{item.score}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
+
+        <!-- <div v-bind:class="{'alert':true, 'alert-primary':(index % 2 != 0), 'alert-danger':(index % 2 == 0) }"
+          role="alert">
+          <h4>{{item.name}}</h4>
+          <h5>{{item.jobTitle}} at {{item.companyName}}</h5>
+          <h6>
+            Phone: {{item.phone}}, Email: {{item.email}}
+            <span class="badge badge-primary">{{item.score}}</span>
+          </h6>
+        </div> -->
       </div>
     </div>
   </div>
