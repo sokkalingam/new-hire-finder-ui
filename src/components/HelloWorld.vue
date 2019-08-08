@@ -4,16 +4,15 @@
 
     <form>
       <div class="form-group row">
-        <label for="jobTitle" class="col-sm-2 col-form-label">Job Title</label>
-        <div class="col-sm-10">
+        <label for="jobTitle" class="col-sm-3">Job Title</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" id="jobTitle" v-model="searchInput.jobTitle"
             v-debounce:300ms="search" />
         </div>
       </div>
 
-      <div class="form-group row">
-        <label for="companyName" class="col-sm-2 col-form-label">Company Name</label>
-        <div class="col-sm-10">
+      <div class="form-group row"><label for="companyName" class="col-sm-3">Company Name</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" id="companyName" v-model="searchInput.companyName"
             v-debounce:300ms="search" />
         </div>
@@ -29,6 +28,9 @@
         <input type="range" class="form-control-range" id="formControlRange" v-model="searchInput.score"
           @change="search" />
       </div>
+
+      <button type="button" class="btn btn-primary btn-lg" @click="search">Search</button>
+
     </form>
 
     <div v-if="this.searchResults.length > 0">
@@ -47,7 +49,7 @@
       <div v-if="this.mapView" class="row">
         <div class="col-lg-9">
           <GmapMap :center="{lat: 39.5, lng: -98.35}" :zoom="5" map-type-id="terrain"
-            style="width: 1650px; height: 700px">
+            style="width: 1870px; height: 700px">
             <gmap-info-window v-if="mapData.contact" :position="mapData.infoWindowPos" :opened="mapData.infoWinOpen"
               @closeclick="mapData.infoWinOpen=false">
 
@@ -78,23 +80,25 @@
                 <th>Name</th>
                 <th>Title</th>
                 <th>Company</th>
-                <th>Avg time in position</th>
-                <th>Changed a job last year</th>
-                <th>No of job changes in last 10 years</th>
+                <!-- <th>Avg time in position</th>
+                <th>Changed job last year</th>
+                <th>Job changes in last 10 years</th> -->
                 <th>Contact Info</th>
                 <th>RecuitMe Score</th>
               </tr>
             </thead>
             <tbody>
               <tr :key="index" v-for="(item, index) in this.searchResults">
-                <td>{{item.name}}</td>
-                <td>{{item.jobTitle}}</td>
+                <td class="text-dark"><b>{{item.name}}</b></td>
+                <td class="text-primary"><b>{{item.jobTitle}}</b></td>
                 <td>{{item.companyName}}</td>
-                <td>{{item.avgTimeInPosition}}</td>
+                <!-- <td>{{item.avgTimeInPosition}}</td>
                 <td>{{item.changedAJobLastYear}}</td>
-                <td>{{item.numJobChangesLast10Years}}</td>
-                <td>{{item.phone}}, {{item.email}}</td>
-                <td>{{item.score}}</td>
+                <td>{{item.numJobChangesLast10Years}}</td> -->
+                <td class="text-info"><b>{{item.phone}}, {{item.email}}</b></td>
+                <td>
+                  <h4><span class="badge badge-primary">{{item.score}}</span></h4>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -161,6 +165,7 @@
         for (var value of this.searchResults) {
           if (value.lat && value.lng) this.mapResults.push(value);
         }
+        console.log(this.searchResults.length, this.mapResults.length);
       },
       toggleInfoWindow: function (marker, idx) {
         this.mapData.infoWindowPos = {
