@@ -2,8 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueResource from 'vue-resource';
 import * as VueGoogleMaps from 'vue2-google-maps';
+import vueDebounce from 'vue-debounce';
 
 Vue.use(VueResource);
+Vue.use(vueDebounce)
 
 Vue.use(VueGoogleMaps, {
   load: {
